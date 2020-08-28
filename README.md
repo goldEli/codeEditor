@@ -1,2 +1,5 @@
-# codeEditor
-Created with CodeSandbox
+## Code Editor
+
+- [x] 可输入代码
+- [ ] 关键字自动补全
+- [ ] 方法提示参数
