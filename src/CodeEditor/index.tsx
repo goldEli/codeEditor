@@ -9,8 +9,6 @@ const CodeEditor: React.FC<Props> = (props) => {
   React.useEffect(() => {
     var editor: Document = refEditor.current?.contentWindow.document;
     editor.designMode = "on";
-    // content.designMode = "on"
-    // content?.exeCommand?.("Bold");
   }, []);
 
   const getEditor = (): Document => {
@@ -29,19 +27,32 @@ const CodeEditor: React.FC<Props> = (props) => {
         </button>
         <button
           onClick={() => {
-            getEditor().execCommand("bold");
+            getEditor().execCommand("superscript");
           }}
         >
           X<sup>2</sup>
         </button>
         <button
           onClick={() => {
-            getEditor().execCommand("bold");
+            getEditor().execCommand("subscript");
           }}
         >
           X<sub>2</sub>
         </button>
-        <input type="color" />
+        <input
+          type="color"
+          title="font color"
+          onChange={(event) => {
+            getEditor().execCommand("ForeColor", false, event.target.value);
+          }}
+        />
+        <input
+          type="color"
+          title="highlight color"
+          onChange={(event) => {
+            getEditor().execCommand("BackColor", false, event.target.value);
+          }}
+        />
       </div>
       <iframe
         ref={refEditor}
